@@ -32,12 +32,12 @@ export const Navbar = () => {
             </div>
             <div className='flex gap-4'>
                <NavLink to={"/login"}>
-                  <button className='border-2 rounded-2xl bg-blue-600 py-2 px-4 font-medium text-white hover:bg-blue-700 duration-300'>
+                  <button className='border-2 border-blue-600 hover:border-blue-700 rounded-2xl bg-blue-600 py-2 px-4 font-medium text-white hover:bg-blue-700 duration-300'>
                      Login
                   </button>
                </NavLink>
                <NavLink to={"/register"}>
-                  <button className='border-2 rounded-2xl bg-blue-600 py-2 px-4 font-medium text-white hover:bg-blue-700 duration-300'>
+                  <button className='border-2  border-blue-600 hover:border-blue-700 rounded-2xl bg-blue-600 py-2 px-4 font-medium text-white hover:bg-blue-700 duration-300'>
                      Register
                   </button>
                </NavLink>
