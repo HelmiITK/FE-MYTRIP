@@ -3,34 +3,34 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
-   const [email, setEmail] = useState();
-   const [password, setPassword] = useState("");
-   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
-   const handleLogin = (e) => {
-     e.preventDefault();
+  const handleLogin = (e) => {
+    e.preventDefault();
 
-     if (!email && !password) {
-       alert("Please enter your email and password!");
-       return;
-     } else if (!email) {
-       alert("email belum di isi");
-       return;
-     } else if (!password) {
-       alert("password belum di isi");
-       return;
-     } else if (password.length < 8) {
-       alert("Password harus minimal 8 karakter");
-       return;
-     }
-   };
+    if (!email && !password) {
+      alert("Please enter your email and password!");
+      return;
+    } else if (!email) {
+      alert("email belum di isi");
+      return;
+    } else if (!password) {
+      alert("password belum di isi");
+      return;
+    } else if (password.length < 8) {
+      alert("Password harus minimal 8 karakter");
+      return;
+    }
+  };
 
-   const togglePassword = () => {
-     setShowPassword(!showPassword);
-   };
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
-   <>
+    <>
       <div className="flex min-h-screen">
         <div className="w-[100%] lg:w-[50%] flex flex-col justify-center items-center mx-[23px] lg:px-[145px] ">
           <form onSubmit={handleLogin} className="w-full">
@@ -49,7 +49,7 @@ const LoginPage = () => {
               <div className="flex flex-col text-[15px]">
                 <div className="flex justify-between items-center">
                   <label className="mb-[4px] font-popins">Password</label>
-                  <Link>
+                  <Link to="/reset-Password">
                     <span className="text-darkblue font-Poppins">Lupa Password</span>
                   </Link>
                 </div>
@@ -99,7 +99,6 @@ const LoginPage = () => {
         </div>
       </div>
     </>
-
   );
 };
 
