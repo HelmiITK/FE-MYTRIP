@@ -25,6 +25,7 @@ import { FaStar } from "react-icons/fa";
 import Alim from "../../assets/Ellipse 9.png"
 
 import Footer from "../../components/Footer"
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
    //Carousel by react-slick
@@ -175,10 +176,10 @@ const HomePage = () => {
                   <div className="grid grid-cols-3 gap-5">
                      {destinasi.map((item, index) => (
                         <>
-                           <div className="border-2 rounded-3xl shadow-lg p-4">
+                           <div className="border-2 rounded-3xl shadow-lg p-4 hover:scale-105 duration-300">
                               <img key={index} src={item.gambar}
                                  alt="gambar"
-                                 className="rounded-3xl h-56 mb-4"
+                                 className="rounded-3xl h-56 mb-4 object-cover w-full"
                               />
                               <h2 className="text-2xl font-semibold">{item.nama}</h2>
                               <div className="flex justify-between text-sm font-semibold">
@@ -202,10 +203,10 @@ const HomePage = () => {
                   <div className="grid grid-cols-3 gap-5">
                      {hotel.map((item, index) => (
                         <>
-                           <div className="border-2 rounded-3xl shadow-lg p-4">
+                           <Link as={Link} to={"/hotel"} className="border-2 rounded-3xl shadow-lg p-4 hover:scale-105 duration-300 cursor-pointer">
                               <img key={index} src={item.gambar}
                                  alt="gambar"
-                                 className="rounded-3xl h-56 mb-4"
+                                 className="rounded-3xl h-56 mb-4 object-cover w-full"
                               />
                               <h2 className="text-2xl font-semibold">{item.nama}</h2>
                               <div className="flex justify-between text-sm font-semibold">
@@ -218,7 +219,7 @@ const HomePage = () => {
                                     <h4>{item.jarak}</h4>
                                  </div>
                               </div>
-                           </div>
+                           </Link>
                         </>
                      ))}
                   </div>

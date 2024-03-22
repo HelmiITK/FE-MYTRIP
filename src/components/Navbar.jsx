@@ -1,5 +1,5 @@
 import Logo from '../assets/Logo.png'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 export const Navbar = () => {
    const Menus = [
@@ -21,7 +21,9 @@ export const Navbar = () => {
       <nav className="w-full fixed z-30 bg-opacity-25 backdrop-filter backdrop-blur-lg bg-white">
          <div className='flex justify-around items-center shadow-md py-5'>
             <div>
-               <img src={Logo} alt="LogoMyTrip" />
+               <Link as={Link} to={'/'}>
+                  <img src={Logo} alt="LogoMyTrip" />
+               </Link>
             </div>
             <div className='flex gap-14'>
                {Menus.map((item, index) => (
