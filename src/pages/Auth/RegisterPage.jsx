@@ -110,7 +110,7 @@ const RegisterPage = () => {
               Daftar
             </button>
             <div className="flex justify-center items-center gap-2 mt-6">
-              m<h1 className="text-[14px] font-normal font-Poppins">Sudah punya akun?</h1>
+              <h1 className="text-[14px] font-normal font-Poppins">Sudah punya akun?</h1>
               <Link to="/login" className="text-darkblue text-[14px] font-bold">
                 Masuk di sini
               </Link>
