@@ -24,7 +24,8 @@ import { FaStar } from "react-icons/fa";
 
 import Alim from "../../assets/Ellipse 9.png";
 
-import Footer from "../../components/Footer";
+import Footer from "../../components/Footer"
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   //Carousel by react-slick
@@ -91,6 +92,7 @@ const HomePage = () => {
     <>
       <Navbar />
       <div className="container mx-auto">
+
         {/* main saction */}
         <div className="relative">
           {/* mainsaction */}
@@ -162,7 +164,7 @@ const HomePage = () => {
 
         {/* gambar bergerak */}
         <Slider {...settings} className="mt-20 pt-6 flex justify-center items-center mx-40 ">
-          <img src={Logo} alt="Logo" className="w-48 h-20 px-8" />
+          <img src={Logo} alt="Logo" className="w-48 h-14 px-8" />
           <img src={traveloka} alt="Logo" className="h-14 px-8" />
           <img src={booking} alt="Logo" className="h-14 px-8" />
           <img src={docker} alt="Logo" className="h-14 px-8" />
@@ -170,19 +172,19 @@ const HomePage = () => {
 
         {/* Rekomendasi Destinasi dan hotel */}
         <div className="flex flex-col mx-44 justify-center items-start mt-14 gap-3">
-          <h1 className="text-black font-bold text-3xl">Rekomendasi Destinasi dan Hotel</h1>
+          <h1 className="text-black font-bold text-3xl">
+            Rekomendasi Destinasi dan Hotel
+          </h1>
           {/* destinasi */}
           <div className="flex gap-4 items-center flex-col">
             <h1 className="text-2xl font-semibold">Destinasi</h1>
             <div className="grid grid-cols-3 gap-5">
               {destinasi.map((item, index) => (
                 <>
-                  <div className="border-2 rounded-3xl shadow-lg p-4">
-                    <img
-                      key={index}
-                      src={item.gambar}
+                  <div className="border-2 rounded-3xl shadow-lg p-4 hover:scale-105 duration-300">
+                    <img key={index} src={item.gambar}
                       alt="gambar"
-                      className="rounded-3xl h-56 mb-4"
+                      className="rounded-3xl h-56 mb-4 object-cover w-full"
                     />
                     <h2 className="text-2xl font-semibold">{item.nama}</h2>
                     <div className="flex justify-between text-sm font-semibold">
@@ -206,12 +208,10 @@ const HomePage = () => {
             <div className="grid grid-cols-3 gap-5">
               {hotel.map((item, index) => (
                 <>
-                  <div className="border-2 rounded-3xl shadow-lg p-4">
-                    <img
-                      key={index}
-                      src={item.gambar}
+                  <Link as={Link} to={"/hotel"} className="border-2 rounded-3xl shadow-lg p-4 hover:scale-105 duration-300 cursor-pointer">
+                    <img key={index} src={item.gambar}
                       alt="gambar"
-                      className="rounded-3xl h-56 mb-4"
+                      className="rounded-3xl h-56 mb-4 object-cover w-full"
                     />
                     <h2 className="text-2xl font-semibold">{item.nama}</h2>
                     <div className="flex justify-between text-sm font-semibold">
@@ -224,7 +224,7 @@ const HomePage = () => {
                         <h4>{item.jarak}</h4>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </>
               ))}
             </div>
