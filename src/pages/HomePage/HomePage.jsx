@@ -92,6 +92,7 @@ const HomePage = () => {
     <>
       <Navbar />
       <div className="container mx-auto">
+
         {/* main saction */}
         <div className="relative">
           {/* mainsaction */}
@@ -100,73 +101,62 @@ const HomePage = () => {
             <div className="absolute top-52 text-white font-medium text-3xl w-1/2 pl-40 leading-relaxed capitalize">
               <h1>Bersama kami liburan anda jadi lebih mudah dan menyenangkan</h1>
             </div>
-
-            {/* gambar bergerak */}
-            <Slider {...settings} className="mt-20 pt-6 flex justify-center items-center mx-40 ">
-              <img src={Logo} alt="Logo" className="w-48 h-14 px-8" />
-              <img src={traveloka} alt="Logo" className="h-14 px-8" />
-              <img src={booking} alt="Logo" className="h-14 px-8" />
-              <img src={docker} alt="Logo" className="h-14 px-8" />
-            </Slider>
-
-            {/* Rekomendasi Destinasi dan hotel */}
-            <div className="flex flex-col mx-44 justify-center items-start mt-14 gap-3">
-              <h1 className="text-black font-bold text-3xl">
-                Rekomendasi Destinasi dan Hotel
-              </h1>
-              {/* destinasi */}
-              <div className="flex gap-4 items-center flex-col">
-                <h1 className="text-2xl font-semibold">Destinasi</h1>
-                <div className="grid grid-cols-3 gap-5">
-                  {destinasi.map((item, index) => (
-                    <>
-                      <div className="border-2 rounded-3xl shadow-lg p-4 hover:scale-105 duration-300">
-                        <img key={index} src={item.gambar}
-                          alt="gambar"
-                          className="rounded-3xl h-56 mb-4 object-cover w-full"
-                        />
-                        <h2 className="text-2xl font-semibold">{item.nama}</h2>
-                        <div className="flex justify-between text-sm font-semibold">
-                          <div className="flex items-center gap-1">
-                            <FaLocationDot />
-                            <h3>{item.lokasi}</h3>
-                          </div>
-                          <div className="flex items-center gap-1 ">
-                            <IoAirplane className="w-6 h-6" />
-                            <h4>{item.jarak}</h4>
-                          </div>
-                        </div>
-                      </div>
-                    </>
-                  ))}
-                </div>
+          </div>
+          <div className="flex justify-center">
+            {/* card menu destinasi */}
+            <div className="border-2 shadow-md py-4 px-2 bg-white absolute w-2/3 rounded-2xl top-[480px]">
+              {/* heading pilihan */}
+              <div className="flex flex-row gap-4">
+                <button className="shadow-md border-2 py-2 px-3 flex gap-2 rounded-xl hover:text-white hover:bg-blue-600 duration-300">
+                  <p>Hotel</p>
+                  <img src={IconHotel} alt="IconHotel" />
+                </button>
+                <button className="shadow-md border-2 py-2 px-3 flex gap-2 rounded-xl hover:text-white hover:bg-blue-600 duration-300">
+                  <p>Hotel</p>
+                  <img src={IconPesawat} alt="IconPesawat" />
+                </button>
               </div>
-              {/* hotel */}
-              <div className="flex gap-4 items-center flex-col mt-10">
-                <h1 className="text-2xl font-semibold">Hotel</h1>
-                <div className="grid grid-cols-3 gap-5">
-                  {hotel.map((item, index) => (
-                    <>
-                      <Link as={Link} to={"/hotel"} className="border-2 rounded-3xl shadow-lg p-4 hover:scale-105 duration-300 cursor-pointer">
-                        <img key={index} src={item.gambar}
-                          alt="gambar"
-                          className="rounded-3xl h-56 mb-4 object-cover w-full"
-                        />
-                        <h2 className="text-2xl font-semibold">{item.nama}</h2>
-                        <div className="flex justify-between text-sm font-semibold">
-                          <div className="flex items-center gap-1">
-                            <FaLocationDot />
-                            <h3>{item.lokasi}</h3>
-                          </div>
-                          <div className="flex items-center gap-1 ">
-                            <IoAirplane className="w-6 h-6" />
-                            <h4>{item.jarak}</h4>
-                          </div>
-                        </div>
-                      </Link>
-                    </>
-                  ))}
+              {/* orang */}
+              <div className="flex justify-end">
+                <button className="flex justify-between items-center gap-9 border-2 shadow-md rounded-3xl px-4">
+                  <FaUserLarge className="w-6 h-6" />
+                  <p>3 Orang</p>
+                  <RiArrowDropDownLine className="w-10 h-10" />
+                </button>
+              </div>
+              {/* detailing */}
+              <div className="flex justify-between mx-2 items-center mt-4 gap-4">
+                <div className="flex flex-col">
+                  <h2 className="text-sm font-semibold mb-1">Dari</h2>
+                  <button className="flex gap-2 items-center border-2 rounded-2xl border-slate-200 shadow-md py-2 px-4 hover:text-white hover:bg-blue-700 duration-300">
+                    <img src={iconBerangkat} alt="icon berangkat" />
+                    <p>Balikpapan (BPN)</p>
+                  </button>
                 </div>
+                <div className="flex flex-col">
+                  <h2 className="text-sm font-semibold mb-1">Ke</h2>
+                  <button className="flex gap-2 items-center border-2 rounded-2xl border-slate-200 shadow-md py-2 px-4 hover:text-white hover:bg-blue-700 duration-300">
+                    <img src={iconTiba} alt="icon tiba" />
+                    <p>Jakarta (JKT)</p>
+                  </button>
+                </div>
+                <div className="flex flex-col">
+                  <h2 className="text-sm font-semibold mb-1">Tanggal Pergi</h2>
+                  <button className="flex gap-2 items-center border-2 rounded-2xl border-slate-200 shadow-md py-2 px-4 hover:text-white hover:bg-blue-700 duration-300">
+                    <img src={iconTanggal} alt="icon tanggal" />
+                    <p>05 Jan 2023</p>
+                  </button>
+                </div>
+                <div className="flex flex-col">
+                  <h2 className="text-sm font-semibold mb-1">Tanggal Pulang</h2>
+                  <button className="flex gap-2 items-center border-2 rounded-2xl border-slate-200 shadow-md py-2 px-4 hover:text-white hover:bg-blue-700 duration-300">
+                    <img src={iconTanggal} alt="icon tanggal" />
+                    <p>10 Mar 2023</p>
+                  </button>
+                </div>
+                <button className="border-2 shadow-sm rounded-2xl text-white bg-blue-600 hover:bg-blue-700 duration-300 mt-5">
+                  <IoIosSearch className="m-2 w-6 h-6" />
+                </button>
               </div>
             </div>
           </div>
@@ -174,7 +164,7 @@ const HomePage = () => {
 
         {/* gambar bergerak */}
         <Slider {...settings} className="mt-20 pt-6 flex justify-center items-center mx-40 ">
-          <img src={Logo} alt="Logo" className="w-48 h-20 px-8" />
+          <img src={Logo} alt="Logo" className="w-48 h-14 px-8" />
           <img src={traveloka} alt="Logo" className="h-14 px-8" />
           <img src={booking} alt="Logo" className="h-14 px-8" />
           <img src={docker} alt="Logo" className="h-14 px-8" />
@@ -182,19 +172,19 @@ const HomePage = () => {
 
         {/* Rekomendasi Destinasi dan hotel */}
         <div className="flex flex-col mx-44 justify-center items-start mt-14 gap-3">
-          <h1 className="text-black font-bold text-3xl">Rekomendasi Destinasi dan Hotel</h1>
+          <h1 className="text-black font-bold text-3xl">
+            Rekomendasi Destinasi dan Hotel
+          </h1>
           {/* destinasi */}
           <div className="flex gap-4 items-center flex-col">
             <h1 className="text-2xl font-semibold">Destinasi</h1>
             <div className="grid grid-cols-3 gap-5">
               {destinasi.map((item, index) => (
                 <>
-                  <div className="border-2 rounded-3xl shadow-lg p-4">
-                    <img
-                      key={index}
-                      src={item.gambar}
+                  <div className="border-2 rounded-3xl shadow-lg p-4 hover:scale-105 duration-300">
+                    <img key={index} src={item.gambar}
                       alt="gambar"
-                      className="rounded-3xl h-56 mb-4"
+                      className="rounded-3xl h-56 mb-4 object-cover w-full"
                     />
                     <h2 className="text-2xl font-semibold">{item.nama}</h2>
                     <div className="flex justify-between text-sm font-semibold">
@@ -218,12 +208,10 @@ const HomePage = () => {
             <div className="grid grid-cols-3 gap-5">
               {hotel.map((item, index) => (
                 <>
-                  <div className="border-2 rounded-3xl shadow-lg p-4">
-                    <img
-                      key={index}
-                      src={item.gambar}
+                  <Link as={Link} to={"/hotel"} className="border-2 rounded-3xl shadow-lg p-4 hover:scale-105 duration-300 cursor-pointer">
+                    <img key={index} src={item.gambar}
                       alt="gambar"
-                      className="rounded-3xl h-56 mb-4"
+                      className="rounded-3xl h-56 mb-4 object-cover w-full"
                     />
                     <h2 className="text-2xl font-semibold">{item.nama}</h2>
                     <div className="flex justify-between text-sm font-semibold">
@@ -236,7 +224,7 @@ const HomePage = () => {
                         <h4>{item.jarak}</h4>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </>
               ))}
             </div>
