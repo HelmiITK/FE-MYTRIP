@@ -1,6 +1,5 @@
 import hotelIcon from "../../assets/hotelIcon.svg"
 import { FaUserLarge } from "react-icons/fa6";
-import { RiArrowDropDownLine } from "react-icons/ri";
 import iconTanggal from "../../assets/healthicons_i-schedule-school-date-time.svg";
 import { IoIosSearch } from "react-icons/io";
 
@@ -32,11 +31,21 @@ const DetailMenuHotelComponent = () => {
                <p>10 Mar 2023</p>
             </button>
          </div>
-         <button className="flex justify-between items-center gap-9 border-2 shadow-md rounded-3xl px-4">
+         {/* jumlah orang */}
+         <div className="flex justify-end items-center gap-4 mt-6">
             <FaUserLarge className="w-6 h-6" />
-            <p>3 Orang</p>
-            <RiArrowDropDownLine className="w-10 h-10" />
-         </button>
+            <select className="select select-bordered  max-w-xs">
+               <option disabled selected>
+                  Jumlah Penumpang?
+               </option>
+               <option>1 orang</option>
+               <option>2 orang</option>
+               <option>3 orang</option>
+               <option>4 orang</option>
+               <option>5 orang</option>
+               <option>6 orang</option>
+            </select>
+         </div>
          <button className="border-2 shadow-sm rounded-2xl text-white bg-blue-600 hover:bg-blue-700 duration-300 mt-5">
             <IoIosSearch className="m-2 w-6 h-6" />
          </button>
