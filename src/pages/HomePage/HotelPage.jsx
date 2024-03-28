@@ -5,6 +5,8 @@ import { IoIosSearch } from "react-icons/io";
 import { SlCalender } from "react-icons/sl";
 import { FaUserLarge } from "react-icons/fa6";
 import { FcLike } from "react-icons/fc";
+import { Link } from "react-router-dom";
+
 const HotelPage = () => {
    return (
       <div>
@@ -63,7 +65,13 @@ const HotelPage = () => {
                         </div>
                         <div className="flex flex-col justify-between my-6 items-end mr-10">
                            <FcLike className="w-8 h-8" />
-                           <div className="border-2 border-green-400 bg-white rounded-2xl text-center py-2 px-6 w-44 h-10 hover:bg-green-500 hover:text-white cursor-pointer duration-300">Cari Kamar</div>
+                           <Link
+                              type="button"
+                              as={Link}
+                              to={"/payment_hotel"}
+                              className="border-2 border-green-400 bg-white rounded-2xl text-center py-2 px-6 w-44 h-10 hover:bg-green-500 hover:text-white cursor-pointer duration-300">
+                              Cari Kamar
+                           </Link>
                         </div>
                      </div>
                      <div className="border-none bg-slate-100 mt-10 rounded-3xl flex gap-10 justify-between shadow-lg">
@@ -85,7 +93,13 @@ const HotelPage = () => {
                         </div>
                         <div className="flex flex-col justify-between my-6 items-end mr-10">
                            <FcLike className="w-8 h-8" />
-                           <div className="border-2 border-green-400 bg-white rounded-2xl text-center py-2 px-6 w-44 h-10 hover:bg-green-500 hover:text-white cursor-pointer duration-300">Cari Kamar</div>
+                           <Link
+                              type="button"
+                              as={Link}
+                              to={"/payment_hotel"}
+                              className="border-2 border-green-400 bg-white rounded-2xl text-center py-2 px-6 w-44 h-10 hover:bg-green-500 hover:text-white cursor-pointer duration-300">
+                              Cari Kamar
+                           </Link>
                         </div>
                      </div>
                   </div>
