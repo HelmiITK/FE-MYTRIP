@@ -5,6 +5,7 @@ import RegisterPage from "./pages/Auth/RegisterPage";
 import SendEmail from "./pages/Auth/SendEmail";
 import HomePage from "./pages/HomePage/HomePage";
 import HotelPage from "./pages/HomePage/HotelPage";
+import Profile from "./pages/Auth/Profile";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/send-email" element={<SendEmail />} />
+          <Route path="/Profile" element={<Profile />} />
           <Route
             path="/"
             element={<HomePage />}
