@@ -6,6 +6,8 @@ import RestaurantIcon from "../../assets/restaurantIcon.svg";
 import SweemIcon from "../../assets/sweemIcon.svg";
 import ParkingIcon from "../../assets/parkingIcon.svg";
 import WifiIcon from "../../assets/wifiIcon.svg";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const PaymetHotel = () => {
    const fasilitas = [
@@ -33,7 +35,12 @@ const PaymetHotel = () => {
    return (
       <div>
          <Navbar />
-         <div className="container mx-auto pt-32">
+         <div className="container mx-auto pt-24">
+            {/* button back */}
+            <Link as={Link} to={"/hotel"} className="flex gap-2 items-center hover:scale-x-105 duration-300 ml-10 mb-4 hover:underline w-1/12">
+               <IoMdArrowRoundBack className="w-6 h-6" />
+               <p className="text-lg font-medium">Kembali</p>
+            </Link>
             <div className="flex gap-6 mx-4 justify-center items-start">
                <img
                   src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aG90ZWx8ZW58MHx8MHx8fDA%3D"
