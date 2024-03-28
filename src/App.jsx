@@ -6,6 +6,7 @@ import SendEmail from "./pages/Auth/SendEmail";
 import HomePage from "./pages/HomePage/HomePage";
 import HotelPage from "./pages/HomePage/HotelPage";
 import Profile from "./pages/Auth/Profile";
+import PaymetHotel from "./pages/Payment/PaymetHotel";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/send-email" element={<SendEmail />} />
+          <Route path="/payment_hotel" element={<PaymetHotel/>}/>
           <Route
             path="/"
             element={<HomePage />}
