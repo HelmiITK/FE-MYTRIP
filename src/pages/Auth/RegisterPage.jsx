@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { register } from "../redux/Actions/AuthActions";
 
 const RegisterPage = () => {
   const [name, setname] = useState("");
@@ -8,6 +10,9 @@ const RegisterPage = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState("");
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -34,6 +39,8 @@ const RegisterPage = () => {
       alert("Password harus memiliki setidaknya satu angka");
       return;
     }
+
+    dispatch(register(email, password, name, phoneNumber, navigate));
   };
 
   const togglePassword = () => {
@@ -62,7 +69,7 @@ const RegisterPage = () => {
                 <input
                   type="email"
                   className="border w-full p-2 rounded-2xl"
-                  placeholder="Contoh: johndoe@gmail.com"
+                  placeholder="Contoh: myTrip@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
