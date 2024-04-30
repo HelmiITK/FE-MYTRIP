@@ -31,7 +31,7 @@ export const login = (email, password, navigate) => async (dispatch) => {
   }
 };
 
-export const register = (email, password, name, no_telp, navigate) => async (dispatch) => {
+export const register = (email, password, name, no_telp, navigate) => async () => {
   try {
     const response = await axios.post(`${api_url}/auth/register`, {
       email: email,

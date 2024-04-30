@@ -1,5 +1,3 @@
-import React from "react";
-
 const recentdata = [
   {
     id: 1,
