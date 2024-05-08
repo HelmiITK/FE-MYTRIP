@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../redux/Actions/AuthActions";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -23,6 +28,8 @@ const LoginPage = () => {
       alert("Password harus minimal 8 karakter");
       return;
     }
+
+    dispatch(login(email, password, navigate));
   };
 
   const togglePassword = () => {
