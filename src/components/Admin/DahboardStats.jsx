@@ -1,4 +1,3 @@
-import React from "react";
 import { FaHotel, FaPlane } from "react-icons/fa";
 
 const DahboardStats = () => {

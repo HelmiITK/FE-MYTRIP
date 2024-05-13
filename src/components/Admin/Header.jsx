@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { HiOutlineSearch, HiOutlineChatAlt } from "react-icons/hi";
 import { FaUser } from "react-icons/fa";
 // import { Popover } from "@material-tailwind/react";
