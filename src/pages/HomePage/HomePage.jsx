@@ -8,9 +8,9 @@ import booking from "../../assets/booking.png";
 import docker from "../../assets/Docker.png";
 
 import { Navbar } from "../../components/Navbar";
-import Footer from "../../components/Footer"
+import Footer from "../../components/Footer";
 
-import DetailMenuHotelComponent from "../../components/HomePage/DetailMenuHotelComponent"
+import DetailMenuHotelComponent from "../../components/HomePage/DetailMenuHotelComponent";
 import DetailMemuPesawatComponent from "../../components/HomePage/DetailMenuPesawatComponent";
 import RekomendasiComponent from "../../components/HomePage/RekomendasiComponent";
 import AboutEtcComponent from "../../components/HomePage/AboutEtcComponent";
@@ -20,7 +20,6 @@ import OurReviewComponent from "../../components/HomePage/OurReviewComponent";
 import { useState } from "react";
 import IconHotel from "../../assets/iconHotel.svg";
 import IconPesawat from "../../assets/iconPesawat.svg";
-
 
 const HomePage = () => {
   //Carousel by react-slick
@@ -40,13 +39,12 @@ const HomePage = () => {
   // Function to handle sidebar menu click
   const handleMenuClick = (stepNumber) => {
     setStep(stepNumber);
-  }
+  };
 
   return (
     <>
       <Navbar />
       <div className="container mx-auto">
-
         {/* main saction */}
         <div className="relative">
           {/* mainsaction */}
@@ -65,28 +63,26 @@ const HomePage = () => {
             <div className="flex flex-row gap-4">
               <button
                 onClick={() => handleMenuClick(1)}
-                className="shadow-md border-2 py-2 px-3 flex gap-2 rounded-xl hover:text-white hover:bg-blue-600 duration-300">
+                className="shadow-md border-2 py-2 px-3 flex gap-2 rounded-xl hover:text-white hover:bg-blue-600 duration-300"
+              >
                 <p>Hotel</p>
+
                 <img src={IconHotel} alt="IconHotel" />
               </button>
               <button
                 onClick={() => handleMenuClick(2)}
-                className="shadow-md border-2 py-2 px-3 flex gap-2 rounded-xl hover:text-white hover:bg-blue-600 duration-300">
+                className="shadow-md border-2 py-2 px-3 flex gap-2 rounded-xl hover:text-white hover:bg-blue-600 duration-300"
+              >
                 <p>Pesawat</p>
                 <img src={IconPesawat} alt="IconPesawat" />
               </button>
             </div>
 
             {/* detailing hotel*/}
-            {step === 1 && (
-              <DetailMenuHotelComponent />
-            )}
+            {step === 1 && <DetailMenuHotelComponent />}
 
             {/* detailing pesawat */}
-            {step === 2 && (
-              <DetailMemuPesawatComponent />
-            )}
-
+            {step === 2 && <DetailMemuPesawatComponent />}
           </div>
         </div>
 
