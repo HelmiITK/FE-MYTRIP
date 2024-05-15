@@ -4,7 +4,7 @@ import { IoAirplane } from "react-icons/io5";
 import PropTypes from "prop-types"
 
 const RekomendasiComponent = ({ pesawat, hotel }) => {
-   console.log(pesawat)
+   
    return (
       <div className="flex flex-col mx-44 justify-center items-start mt-14 gap-3">
          <h1 className="text-black font-bold text-3xl">

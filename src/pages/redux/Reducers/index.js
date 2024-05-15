@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import AuthReducers from "./AuthReducers";
-import TiketReducers from "./TiketReducers";
+import AddReducers from "./AddReducers";
 
 export default combineReducers({
   auth: AuthReducers,
-  tiket: TiketReducers
+  add: AddReducers,
 });

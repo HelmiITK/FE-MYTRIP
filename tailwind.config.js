@@ -3,19 +3,13 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {},
   },
-  plugins: [
-    require("daisyui"),
-  ],
-
-  pluginss: [
-    require('flowbite/plugin')
-  ],
-
-
+  plugins: [require("flowbite/plugin")],
+  plugins: [require("flowbite/plugin")],
 
   // daisyUI config (optional - here are the default values)
   daisyui: {
@@ -28,5 +22,4 @@ export default {
     logs: true, // Shows info about daisyUI version and used config in the console when building your CSS
     themeRoot: ":root", // The element that receives theme color CSS variables
   },
-}
-
+};

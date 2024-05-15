@@ -61,3 +61,6 @@ export const register = (email, password, name, no_telp, navigate) => async () =
       }
    }
 };
+
+
+// export const sendEmail = ()

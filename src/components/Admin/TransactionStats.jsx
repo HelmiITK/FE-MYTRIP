@@ -67,7 +67,7 @@ const data = [
   },
   {
     name: "Des",
-    Pesawat: 3490,
+    Pesawat: 5490,
     Hotel: 4300,
   },
 ];
