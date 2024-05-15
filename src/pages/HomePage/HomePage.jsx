@@ -17,12 +17,26 @@ import AboutEtcComponent from "../../components/HomePage/AboutEtcComponent";
 import FaqComponent from "../../components/HomePage/FaqComponent";
 import OurReviewComponent from "../../components/HomePage/OurReviewComponent";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IconHotel from "../../assets/iconHotel.svg";
 import IconPesawat from "../../assets/iconPesawat.svg";
 
+import { getTiket } from "../redux/Actions/TiketActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+
+  const { pesawat } = useSelector((state) => state.tiket)
+  const { hotel } = useSelector((state) => state.tiket)
+  const { detailHotel } = useSelector((state) => state.tiket)
+
+  // console.log(pesawat)
+
+  useEffect(() => {
+    dispatch(getTiket());
+  }, [dispatch])
+
   //Carousel by react-slick
   const settings = {
     dots: true,
@@ -99,7 +113,7 @@ const HomePage = () => {
         </Slider>
 
         {/* Rekomendasi Destinasi dan hotel */}
-        <RekomendasiComponent />
+        <RekomendasiComponent pesawat={pesawat} hotel={hotel} detailHotel={detailHotel} />
 
         {/* about, vision, mision */}
         <AboutEtcComponent />

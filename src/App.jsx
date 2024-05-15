@@ -28,16 +28,13 @@ function App() {
           <Route path="/admin" element={<Layout />}>
             <Route index element={<DashboardPage />} />
             <Route path="hotel" element={<KelolaHotel />} />
-            {/* <Route path="pesawat" element={<KelolaHotel />} /> */}
           </Route>
+
           <Route path="/admin" element={<Layout />} />
-          <Route path="/payment_hotel" element={<PaymetHotel />} />
+          <Route path="/payment_hotel/:hotelId" element={<PaymetHotel />} />
+
           <Route
-            path="/"
-            element={<HomePage />}
-          />
-          <Route
-            path="/hotel"
+            path="/hotel/:hotelId"
             element={<HotelPage />}
           />
 

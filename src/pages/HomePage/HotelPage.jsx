@@ -7,7 +7,19 @@ import { FaUserLarge } from "react-icons/fa6";
 import { FcLike } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getDetailHotel } from "../redux/Actions/TiketActions";
+import { useEffect } from "react";
+
 const HotelPage = () => {
+   const { hotelId } = useParams();
+   const dispatch = useDispatch();
+
+   const { detailHotel } = useSelector((state) => state.tiket);
+   useEffect(() => {
+      dispatch(getDetailHotel(hotelId))
+   }, [])
    return (
       <div>
          <Navbar />
@@ -54,10 +66,10 @@ const HotelPage = () => {
                               className="object-contain w-64 rounded-s-3xl"
                            />
                            <div className="flex flex-col gap-6 justify-center">
-                              <h1 className="font-medium text-lg">Nama Hotel</h1>
-                              <p className="font-medium">Lokasi</p>
+                              <h1 className="font-medium text-lg">{detailHotel?.hotel_name}</h1>
+                              <p className="font-medium">{detailHotel?.hotel_alamat}</p>
                               <div className="flex gap-6 justify-between">
-                                 <div className="border-none bg-blue-700 py-2 px-3 rounded-2xl text-white">Ac</div>
+                                 <div className="border-none bg-blue-700 py-2 px-3 rounded-2xl text-white">{detailHotel?.hotel_facility}</div>
                                  <div className="border-none bg-blue-700 py-2 px-3 rounded-2xl text-white">Kolam Renang</div>
                                  <div className="border-none bg-blue-700 py-2 px-3 rounded-2xl text-white">Bar Coffe</div>
                               </div>
@@ -68,13 +80,13 @@ const HotelPage = () => {
                            <Link
                               type="button"
                               as={Link}
-                              to={"/payment_hotel"}
+                              to={`/payment_hotel/${detailHotel.id}`}
                               className="border-2 border-green-400 bg-white rounded-2xl text-center py-2 px-6 w-44 h-10 hover:bg-green-500 hover:text-white cursor-pointer duration-300">
-                              Cari Kamar
+                              Detail hotel
                            </Link>
                         </div>
                      </div>
-                     <div className="border-none bg-slate-100 mt-10 rounded-3xl flex gap-10 justify-between shadow-lg">
+                     {/* <div className="border-none bg-slate-100 mt-10 rounded-3xl flex gap-10 justify-between shadow-lg">
                         <div className="flex gap-8">
                            <img
                               src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvdGVsfGVufDB8fDB8fHww"
@@ -101,7 +113,7 @@ const HotelPage = () => {
                               Cari Kamar
                            </Link>
                         </div>
-                     </div>
+                     </div> */}
                   </div>
                </div>
             </div>
