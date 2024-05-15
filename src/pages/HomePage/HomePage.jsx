@@ -106,11 +106,11 @@ const HomePage = () => {
         </div>
 
         {/* gambar bergerak */}
-        <Slider {...settings} className="mt-20 pt-6 flex justify-center items-center mx-40 ">
-          <img src={Logo} alt="Logo" className="w-48 h-14 px-8" />
-          <img src={traveloka} alt="Logo" className="h-14 px-8" />
-          <img src={booking} alt="Logo" className="h-14 px-8" />
-          <img src={docker} alt="Logo" className="h-14 px-8" />
+        <Slider {...settings} className="mt-14 flex justify-center items-center  overflow-clip">
+          <img src={Logo} alt="Logo" className="h-20 object-contain" />
+          <img src={traveloka} alt="Logo" className="h-20 object-contain"  />
+          <img src={booking} alt="Logo" className="h-20 object-contain" />
+          <img src={docker} alt="Logo" className="h-20 object-contain" />
         </Slider>
 
         {/* Rekomendasi Destinasi dan hotel */}

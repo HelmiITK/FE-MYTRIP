@@ -82,7 +82,7 @@ const PaymetHotel = () => {
                   </div>
                   {/* alamat */}
                   <div className="w-2/3 font-medium text-sm flex items-center gap-6">
-                     <IoLocationSharp className="w-12 h-12 text-blue-600 " />
+                     <IoLocationSharp className="w-28 h-28 text-blue-600 " />
                      <h1>
                         {detailHotel?.hotel_alamat}
                      </h1>
