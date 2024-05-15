@@ -22,7 +22,8 @@ import IconHotel from "../../assets/iconHotel.svg";
 import IconPesawat from "../../assets/iconPesawat.svg";
 
 import { getTiket } from "../redux/Actions/TiketActions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
   const dispatch = useDispatch();

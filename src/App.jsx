@@ -14,6 +14,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import KelolaPesawat from "./pages/Admin/KelolaPesawat";
 import AddHotel from "./components/Modal/AddHotel";
 import AddPesawat from "./components/Modal/AddPesawat";
+import PesawatPage from "./pages/HomePage/PesawatPage";
 
 function App() {
   return (
@@ -39,9 +40,10 @@ function App() {
             {/* <Route path="pesawat" element={<KelolaHotel />} /> */}
           </Route>
           {/* <Route path="/admin" element={<Layout />} /> */}
-          <Route path="/payment-hotel" element={<PaymetHotel />} />
+          <Route path="/payment-hotel/:hotelId" element={<PaymetHotel />} />
           <Route path="/" element={<HomePage />} />
-          <Route path="/hotel" element={<HotelPage />} />
+          <Route path="/hotel/:hotelId" element={<HotelPage />} />
+          <Route path="/pesawat/:pesawatId" element={<PesawatPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

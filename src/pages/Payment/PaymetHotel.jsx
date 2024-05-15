@@ -57,9 +57,9 @@ const PaymetHotel = () => {
             </Link>
             <div className="flex gap-6 mx-4 justify-start items-start">
                <img
-                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aG90ZWx8ZW58MHx8MHx8fDA%3D"
+                  src={detailHotel?.hotel_foto}
                   alt=""
-                  className="object-contain w-full rounded-xl"
+                  className="object-contain w-1/2 rounded-xl"
                />
                {/* card detail */}
                <div className="flex flex-col gap-4 w-full">
@@ -74,17 +74,21 @@ const PaymetHotel = () => {
                      <h2 className="text-lg font-medium">Hotels</h2>
                      <div className="rating">
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400"  />
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
-                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                      </div>
                   </div>
                   {/* alamat */}
-                  <div className="w-2/3 font-medium text-sm flex items-center gap-2">
+                  <div className="w-2/3 font-medium text-sm flex items-center gap-6">
                      <IoLocationSharp className="w-12 h-12 text-blue-600 " />
                      <h1>
                         {detailHotel?.hotel_alamat}
+                     </h1>
+                     <div className="w-px h-8 bg-black"></div>
+                     <h1>
+                        {detailHotel?.hotel_city}
                      </h1>
                   </div>
                   {/* harga */}
