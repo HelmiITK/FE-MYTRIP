@@ -9,11 +9,11 @@ export const Navbar = () => {
       },
       {
          nama: "About",
-         link: "/",
+         link: "/about",
       },
       {
          nama: "FAQ",
-         link: "/",
+         link: "/ada",
       },
    ]
 
@@ -28,7 +28,9 @@ export const Navbar = () => {
             <div className='flex gap-14'>
                {Menus.map((item, index) => (
                   <ul key={index}>
-                     <li className='text-black text-lg font-semibold hover:scale-105 duration-300 hover:text-white cursor-pointer'>{item.nama}</li>
+                     <Link as={Link} to={`${item.link}`} className='text-black text-lg font-semibold hover:scale-105 duration-300 hover:text-white cursor-pointer'>
+                        {item.nama}
+                     </Link>
                   </ul>
                ))}
             </div>

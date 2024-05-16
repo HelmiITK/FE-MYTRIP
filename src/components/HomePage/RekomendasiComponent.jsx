@@ -1,55 +1,9 @@
 import { Link } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoAirplane } from "react-icons/io5";
+import PropTypes from "prop-types"
 
-const RekomendasiComponent = () => {
-   const destinasi = [
-      {
-         gambar:
-            "https://images.unsplash.com/photo-1682687982134-2ac563b2228b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8fA%3D%3D",
-         nama: "Labuan Bajo",
-         lokasi: "NTT, Indonesia",
-         jarak: "1.968,5 km",
-      },
-      {
-         gambar:
-            "https://images.unsplash.com/photo-1709403338214-8bf2ed1697f5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMXx8fGVufDB8fHx8fA%3D%3D",
-         nama: "Labuan Bajo",
-         lokasi: "NTT, Indonesia",
-         jarak: "1.968,5 km",
-      },
-      {
-         gambar:
-            "https://images.unsplash.com/photo-1682687982134-2ac563b2228b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8fA%3D%3D",
-         nama: "Labuan Bajo",
-         lokasi: "NTT, Indonesia",
-         jarak: "1.968,5 km",
-      },
-   ];
-
-   const hotel = [
-      {
-         gambar:
-            "https://plus.unsplash.com/premium_photo-1678240508014-d1ab7345bfe6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aG90ZWx8ZW58MHx8MHx8fDA%3D",
-         nama: "Platinum",
-         lokasi: "Kilo 5, Balikpapan",
-         jarak: "1240 km",
-      },
-      {
-         gambar:
-            "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aG90ZWx8ZW58MHx8MHx8fDA%3D",
-         nama: "Ibis and Glow",
-         lokasi: "Saranjana, Samarinda",
-         jarak: "2340 km",
-      },
-      {
-         gambar:
-            "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGhvdGVsfGVufDB8fDB8fHww",
-         nama: "Badak City",
-         lokasi: "Tanjung, Muara Badak",
-         jarak: "3400 km",
-      },
-   ];
+const RekomendasiComponent = ({ pesawat, hotel }) => {
 
    return (
       <div className="flex flex-col mx-44 justify-center items-start mt-14 gap-3">
@@ -59,26 +13,28 @@ const RekomendasiComponent = () => {
          {/* destinasi */}
          <div className="flex gap-4 items-center flex-col">
             <h1 className="text-2xl font-semibold">Destinasi</h1>
-            <div className="grid grid-cols-3 gap-5">
-               {destinasi.map((item, index) => (
+            <div className="grid grid-cols-3 gap-8">
+               {pesawat.map((item) => (
                   <>
-                     <div className="border-2 rounded-3xl shadow-lg p-4 hover:scale-105 duration-300">
-                        <img key={index} src={item.gambar}
-                           alt="gambar"
-                           className="rounded-3xl h-56 mb-4 object-cover w-full"
+                     <Link as={Link} to={`/pesawat/${item.id}`} className="border-2 group rounded-3xl shadow-lg p-4 hover:scale-105 w-full hover:bg-blue-500 duration-300">
+                        <img
+                           key={item.id}
+                           src={item.pesawat_foto}
+                           alt={item.pesawat_name}
+                           className="rounded-3xl h-56 mb-4 object-cover w-96 group-hover:drop-shadow-xl"
                         />
-                        <h2 className="text-2xl font-semibold">{item.nama}</h2>
-                        <div className="flex justify-between text-sm font-semibold">
+                        <h2 className="text-2xl font-semibold group-hover:text-white duration-300 group-hover:text-bold">{item.pesawat_name}</h2>
+                        <div className="flex justify-between text-sm font-semibold ">
                            <div className="flex items-center gap-1">
-                              <FaLocationDot />
-                              <h3>{item.lokasi}</h3>
+                              <FaLocationDot className="group-hover:text-white duration-300 group-hover:text-bold" />
+                              <h3 className="group-hover:text-white duration-300 group-hover:text-bold">{item.pesawat_depature_kota}</h3>
                            </div>
                            <div className="flex items-center gap-1 ">
-                              <IoAirplane className="w-6 h-6" />
-                              <h4>{item.jarak}</h4>
+                              <IoAirplane className="w-6 h-6 group-hover:text-white duration-300 group-hover:text-bold" />
+                              <h4 className="group-hover:text-white duration-300 group-hover:text-bold">{new Date(item.pesawat_depature).toISOString().split('T')[0]}</h4>
                            </div>
                         </div>
-                     </div>
+                     </Link>
                   </>
                ))}
             </div>
@@ -87,22 +43,20 @@ const RekomendasiComponent = () => {
          <div className="flex gap-4 items-center flex-col mt-10">
             <h1 className="text-2xl font-semibold">Hotel</h1>
             <div className="grid grid-cols-3 gap-5">
-               {hotel.map((item, index) => (
+               {hotel.map((item, i) => (
                   <>
-                     <Link as={Link} to={"/hotel"} className="border-2 rounded-3xl shadow-lg p-4 hover:scale-105 duration-300 cursor-pointer">
-                        <img key={index} src={item.gambar}
-                           alt="gambar"
-                           className="rounded-3xl h-56 mb-4 object-cover w-full"
+                     <Link as={Link} to={`/hotel/${item.id}`} className="border-2 rounded-3xl shadow-lg p-4 hover:scale-105 duration-300 cursor-pointer hover:bg-blue-500 group ">
+                        <img
+                           key={i}
+                           src={item.hotel_foto}
+                           alt={item.hotel_name}
+                           className="rounded-3xl h-56 mb-4 object-cover w-full group-hover:drop-shadow-xl"
                         />
-                        <h2 className="text-2xl font-semibold">{item.nama}</h2>
+                        <h2 className="text-2xl font-semibold group-hover:text-white duration-300 group-hover:text-bold">{item.hotel_name}</h2>
                         <div className="flex justify-between text-sm font-semibold">
                            <div className="flex items-center gap-1">
-                              <FaLocationDot />
-                              <h3>{item.lokasi}</h3>
-                           </div>
-                           <div className="flex items-center gap-1 ">
-                              <IoAirplane className="w-6 h-6" />
-                              <h4>{item.jarak}</h4>
+                              <FaLocationDot className="group-hover:text-white duration-300 group-hover:text-bold" />
+                              <h3 className="group-hover:text-white duration-300 group-hover:text-bold">{item.hotel_city}</h3>
                            </div>
                         </div>
                      </Link>
@@ -114,4 +68,9 @@ const RekomendasiComponent = () => {
    )
 }
 
-export default RekomendasiComponent
+export default RekomendasiComponent;
+
+RekomendasiComponent.propTypes = {
+   pesawat: PropTypes.object,
+   hotel: PropTypes.object,
+}

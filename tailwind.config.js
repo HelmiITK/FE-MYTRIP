@@ -8,8 +8,14 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [require("flowbite/plugin")],
-  plugins: [require("flowbite/plugin")],
+  plugins: [
+    require("daisyui"),
+  ],
+
+  pluginss: [
+    require('flowbite/plugin')
+  ],
+
 
   // daisyUI config (optional - here are the default values)
   daisyui: {
