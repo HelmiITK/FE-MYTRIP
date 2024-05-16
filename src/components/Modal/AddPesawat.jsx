@@ -1,18 +1,25 @@
 import { Button, Modal, TextInput } from "flowbite-react";
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { addPesawat } from "../../pages/redux/Actions/AddActions";
 // import DateTimePicker from "react-datetime-picker";
 
 const AddPesawat = ({ addPesawatt, setAddPesawatt }) => {
+  const dispatch = useDispatch();
   const [jenisPesawat, setJenisPesawat] = useState();
   const [depature, setDepature] = useState();
   const [destination, setDestination] = useState();
   const [dateDepature, setDateDepature] = useState();
   const [dateDestination, setDateDestination] = useState();
+  const [harga, setHarga] = useState();
 
   // const [value, onChange] = useState(new Date());
 
   // const dateRangeRef = useRef(null);
+  const handlePesawat = () => {
+    dispatch(addPesawat(jenisPesawat, depature, destination, dateDepature, dateDestination, harga))
+  };
 
   return (
     <>
@@ -78,13 +85,23 @@ const AddPesawat = ({ addPesawatt, setAddPesawatt }) => {
                 required
               />
             </div>
+            <div className="flex flex-col">
+              <label className="font-semibold text-[15px] mb-[4px]">Harga</label>
+              <TextInput
+                type="text"
+                placeholder="ex: 200"
+                value={harga}
+                onChange={(event) => setHarga(event.target.value)}
+                required
+              />
+            </div>
             {/* <div>
               <DateTimePicker onChange={onChange} value={value} />
             </div> */}
             <div className="w-full py-3 flex justify-center">
               <Button
                 className="w-96 h-full "
-                // onClick={}
+                onClick={handlePesawat}
               >
                 Tambah
               </Button>
