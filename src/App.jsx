@@ -17,14 +17,32 @@ import AddPesawat from "./components/Modal/AddPesawat";
 import PesawatPage from "./pages/HomePage/PesawatPage";
 // import LoginAdmit from "./pages/Admin/LoginAdmit";
 
+import NoAccessToken from "./pages/Security/NoAccessToken";
+import Protected from "./pages/Security/Protected";
+// import Unauthorized from "./pages/Security/Unauthorized";
+
 function App() {
   return (
     <>
       <Router>
         <Routes>
           <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route
+            path="/login"
+            element={
+              <NoAccessToken>
+                <LoginPage />
+              </NoAccessToken>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <NoAccessToken>
+                <RegisterPage />
+              </NoAccessToken>
+            }
+          />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/send-email" element={<SendEmail />} />
           <Route path="/" element={<HomePage />} />
@@ -41,14 +59,21 @@ function App() {
             <Route path="kelola-hotel" element={<KelolaHotel />} />
             <Route path="kelola-pesawat" element={<KelolaPesawat />} />
           </Route>
-          
-          {/* <Route path="/admin" element={<Layout />} /> */}
-          <Route path="/payment-hotel/:hotelId" element={<PaymetHotel />} />
+          <Route
+            path="/payment-hotel/:hotelId"
+            element={
+              <Protected>
+                <PaymetHotel />
+              </Protected>
+            }
+          />
           <Route path="/" element={<HomePage />} />
           <Route path="/hotel/:hotelId" element={<HotelPage />} />
           <Route path="/pesawat/:pesawatId" element={<PesawatPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
+
+          {/* <Route path="/unauthorized" element={<Unauthorized />} /> */}
         </Routes>
       </Router>
     </>

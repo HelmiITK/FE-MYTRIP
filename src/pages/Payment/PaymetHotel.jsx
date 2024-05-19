@@ -13,16 +13,17 @@ import { IoLocationSharp } from "react-icons/io5";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailHotel } from "../redux/Actions/TiketActions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createReservasiHotel } from "../redux/Actions/TiketActions";
 
 const PaymetHotel = () => {
    const { hotelId } = useParams();
    const dispatch = useDispatch();
-
    const { detailHotel } = useSelector((state) => state.tiket);
+
    useEffect(() => {
       dispatch(getDetailHotel(hotelId))
-   }, [])
+   }, [dispatch, hotelId])
 
    const fasilitas = [
       {
@@ -46,6 +47,14 @@ const PaymetHotel = () => {
          icon: WifiIcon,
       },
    ]
+
+   const [cekIn, setCekIn] = useState("");
+   const [cekOut, setCekOut] = useState("");
+   // const [idHotelFacility, setIdHotelFacility] = useState("");
+
+   const handlePesanHotel = () => {
+      dispatch(createReservasiHotel(hotelId, cekIn, cekOut));
+   };
    return (
       <div>
          <Navbar />
@@ -57,7 +66,7 @@ const PaymetHotel = () => {
             </Link>
             <div className="flex gap-6 mx-4 justify-start items-start">
                <img
-                  src={detailHotel?.hotel_foto}
+                  src={detailHotel?.hotel?.hotel_foto}
                   alt=""
                   className="object-contain w-1/2 rounded-xl"
                />
@@ -65,17 +74,17 @@ const PaymetHotel = () => {
                <div className="flex flex-col gap-4 w-full">
                   {/* nama hotel */}
                   <h1 className="text-3xl font-semibold">
-                     {detailHotel?.hotel_name}
+                     {detailHotel?.hotel?.hotel_name}
                   </h1>
                   {/* deskrispi */}
-                  <h2>{detailHotel?.hotel_desc}</h2>
+                  <h2>{detailHotel?.hotel?.hotel_desc}</h2>
                   {/* bintang */}
                   <div className="flex items-center gap-3">
                      <h2 className="text-lg font-medium">Hotels</h2>
                      <div className="rating">
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400"  />
+                        <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked />
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                      </div>
@@ -84,17 +93,17 @@ const PaymetHotel = () => {
                   <div className="w-2/3 font-medium text-sm flex items-center gap-6">
                      <IoLocationSharp className="w-28 h-28 text-blue-600 " />
                      <h1>
-                        {detailHotel?.hotel_alamat}
+                        {detailHotel?.hotel?.hotel_alamat}
                      </h1>
                      <div className="w-px h-8 bg-black"></div>
                      <h1>
-                        {detailHotel?.hotel_city}
+                        {detailHotel?.hotel?.hotel_city}
                      </h1>
                   </div>
                   {/* harga */}
                   <div className="flex flex-col gap-2">
                      <h2 className="font-medium text-base">Harga/Room/Night</h2>
-                     <p className="font-semibold text-xl">Rp. {detailHotel?.hotel_harga}</p>
+                     <p className="font-semibold text-xl">Rp. {detailHotel?.hotel?.hotel_harga}</p>
                   </div>
                   {/* button pesan */}
                   {/* Open the modal using document.getElementById('ID').showModal() method */}
@@ -102,26 +111,44 @@ const PaymetHotel = () => {
                   <dialog id="my_modal_2" className="modal">
                      <div className="modal-box">
                         <h3 className="font-bold text-lg">Form Pemesanan</h3>
-                        <form action="" className="flex flex-col gap-3">
-                           <label htmlFor="nama" className="flex flex-col gap-2">
-                              <h1>Nama</h1>
+                        <form
+                           className="flex flex-col gap-3"
+                           onSubmit={(e) => { e.preventDefault(); handlePesanHotel(); }}
+                        >
+                           <label htmlFor="cekInHotel" className="flex flex-col gap-2">
+                              <h1>Cek in hotel</h1>
                               <input
-                                 type="text"
-                                 id="nama"
-                                 name="nama"
+                                 type="date"
+                                 id="cekInHotel"
+                                 name="cekInHotel"
+                                 value={cekIn}
+                                 onChange={(e) => setCekIn(e.target.value)}
                                  className="border border-black rounded-md py-2 px-4 "
                               />
                            </label>
-                           <label htmlFor="orang" className="flex flex-col gap-2">
-                              <h1>Jumlah orang</h1>
+                           <label htmlFor="cekOutHotel" className="flex flex-col gap-2">
+                              <h1>Cek out hotel</h1>
                               <input
-                                 type="text"
-                                 id="orang"
-                                 name="orang"
+                                 type="date"
+                                 id="cekOutHotel"
+                                 name="cekOutHotel"
+                                 value={cekOut}
+                                 onChange={(e) => setCekOut(e.target.value)}
                                  className="border border-black rounded-md py-2 px-4 "
                               />
                            </label>
-                           <button className="border bg-blue-500 text-white rounded-md py-2 px-4 mt-4 font-medium hover:bg-blue-600 duration-300">
+                           {/* <label htmlFor="idHotelFacility" className="flex flex-col gap-2">
+                              <h1>hotel room</h1>
+                              <input
+                                 type="text"
+                                 id="idHotelFacility"
+                                 name="idHotelFacility"
+                                 value={idHotelFacility}
+                                 onChange={(e) => setIdHotelFacility(e.target.value)}
+                                 className="border border-black rounded-md py-2 px-4 "
+                              />
+                           </label> */}
+                           <button type="submit" className="border bg-blue-500 text-white rounded-md py-2 px-4 mt-4 font-medium hover:bg-blue-600 duration-300">
                               Pesan
                            </button>
                         </form>

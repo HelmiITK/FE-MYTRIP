@@ -7,7 +7,6 @@ import { FaUserLarge } from "react-icons/fa6";
 import { FcLike } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
-
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailHotel } from "../redux/Actions/TiketActions";
@@ -22,7 +21,7 @@ const HotelPage = () => {
   useEffect(() => {
     dispatch(getDetailHotel(hotelId))
   }, [])
-  
+
   return (
     <div>
       <Navbar />
@@ -66,13 +65,13 @@ const HotelPage = () => {
               <div className="border-none bg-slate-100 mt-10 rounded-3xl flex gap-10 justify-between shadow-lg">
                 <div className="flex gap-8">
                   <img
-                    src={detailHotel?.hotel_foto}
+                    src={detailHotel?.hotel?.hotel_foto}
                     alt=""
                     className="object-contain w-64 rounded-s-3xl"
                   />
                   <div className="flex flex-col gap-6 justify-center">
-                    <h1 className="font-medium text-lg">{detailHotel?.hotel_name}</h1>
-                    <p className="font-medium">{detailHotel?.hotel_city}</p>
+                    <h1 className="font-medium text-lg">{detailHotel?.hotel?.hotel_name}</h1>
+                    <p className="font-medium">{detailHotel?.hotel?.hotel_city}</p>
                     <div className="flex gap-6 justify-between">
                       <div className="border-none bg-blue-700 py-2 px-3 rounded-2xl text-white">
                         {detailHotel?.hotel_kategori}
@@ -86,9 +85,9 @@ const HotelPage = () => {
                     type="button"
                     as={Link}
                     to={`/payment-hotel/${hotelId}`}
-                    className="border-2 border-green-400 bg-white rounded-2xl text-center py-2 px-6 w-44 h-10 hover:bg-green-500 hover:text-white cursor-pointer duration-300"
+                    className="border-2 border-green-400 bg-white rounded-2xl text-center px-6 w-44 py-2 hover:bg-green-500 hover:text-white cursor-pointer duration-300"
                   >
-                    Cari Kamar
+                    Detail Kamar
                   </Link>
                 </div>
               </div>

@@ -41,6 +41,13 @@ const LoginPage = () => {
       <div className="flex min-h-screen">
         <div className="w-[100%] lg:w-[50%] flex flex-col justify-center items-center mx-[23px] lg:px-[145px] ">
           <form onSubmit={handleLogin} className="w-full">
+            <Link
+              as={Link}
+              to={"/"}
+              className="text-lg"
+            >
+              Kembali ke home
+            </Link>
             <h1 className="text-[24px] font-bold text-darkblue mb-8">Masuk</h1>
             <div className="flex flex-col gap-5">
               <div className="flex flex-col">
@@ -83,7 +90,8 @@ const LoginPage = () => {
                 </div>
               </div>
             </div>
-            <button className="bg-red-500 w-full text-[14px] font-medium bg-darkblue text-balack py-[10px] rounded-2xl mt-5">
+            
+            <button type="submit" className="bg-red-500 w-full text-[14px] font-medium bg-darkblue text-balack py-[10px] rounded-2xl mt-5">
               Masuk
             </button>
             <div className="flex flex-col justify-center items-center gap-2 mt-6">
