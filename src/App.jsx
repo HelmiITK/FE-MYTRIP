@@ -12,6 +12,9 @@ import Profile from "./pages/Auth/Profile";
 import PaymetHotel from "./pages/Payment/PaymetHotel";
 import NotFoundPage from "./pages/NotFoundPage";
 import KelolaPesawat from "./pages/Admin/KelolaPesawat";
+import AddHotel from "./components/Modal/AddHotel";
+import AddPesawat from "./components/Modal/AddPesawat";
+import PesawatPage from "./pages/HomePage/PesawatPage";
 // import LoginAdmit from "./pages/Admin/LoginAdmit";
 
 function App() {
@@ -26,18 +29,24 @@ function App() {
           <Route path="/send-email" element={<SendEmail />} />
           <Route path="/" element={<HomePage />} />
 
+          {/* modal view test */}
+          <Route path="/modal-hotel" element={<AddHotel />} />
+          <Route path="/modal-pesawat" element={<AddPesawat />} />
+
           {/* Admin */}
-          {/* <Route path="/login-admit" element={<LoginAdmit />} /> */}
+          {/* <Route path="/login-admit" element={<login />} /> */}
+          {/* <Route path="/admit" element={<LoginAdmit/>} /> */}
           <Route path="/admin" element={<Layout />}>
             <Route path="dashboard" element={<DashboardPage />} />
             <Route path="kelola-hotel" element={<KelolaHotel />} />
             <Route path="kelola-pesawat" element={<KelolaPesawat />} />
-            {/* <Route path="pesawat" element={<KelolaHotel />} /> */}
           </Route>
+          
           {/* <Route path="/admin" element={<Layout />} /> */}
-          <Route path="/payment-hotel" element={<PaymetHotel />} />
+          <Route path="/payment-hotel/:hotelId" element={<PaymetHotel />} />
           <Route path="/" element={<HomePage />} />
-          <Route path="/hotel" element={<HotelPage />} />
+          <Route path="/hotel/:hotelId" element={<HotelPage />} />
+          <Route path="/pesawat/:pesawatId" element={<PesawatPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

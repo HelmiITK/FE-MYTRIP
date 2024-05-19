@@ -88,7 +88,6 @@ const LoginAdmit = () => {
               Masuk
             </button>
           </form>
-          <div className="">or Login With</div>
         </div>
         <div className="hidden lg:flex justify-center items-center bg-indigo-700 w-[50%] min-h-[100dvh] ">
           <img

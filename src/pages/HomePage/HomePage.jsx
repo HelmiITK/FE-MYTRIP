@@ -8,20 +8,36 @@ import booking from "../../assets/booking.png";
 import docker from "../../assets/Docker.png";
 
 import { Navbar } from "../../components/Navbar";
-import Footer from "../../components/Footer";
+import Footer from "../../components/Footer"
 
-import DetailMenuHotelComponent from "../../components/HomePage/DetailMenuHotelComponent";
+import DetailMenuHotelComponent from "../../components/HomePage/DetailMenuHotelComponent"
 import DetailMemuPesawatComponent from "../../components/HomePage/DetailMenuPesawatComponent";
 import RekomendasiComponent from "../../components/HomePage/RekomendasiComponent";
 import AboutEtcComponent from "../../components/HomePage/AboutEtcComponent";
 import FaqComponent from "../../components/HomePage/FaqComponent";
 import OurReviewComponent from "../../components/HomePage/OurReviewComponent";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IconHotel from "../../assets/iconHotel.svg";
 import IconPesawat from "../../assets/iconPesawat.svg";
 
+import { getTiket } from "../redux/Actions/TiketActions";
+import { useDispatch} from "react-redux";
+import { useSelector } from "react-redux";
+
 const HomePage = () => {
+  const dispatch = useDispatch();
+
+  const { pesawat } = useSelector((state) => state.tiket)
+  const { hotel } = useSelector((state) => state.tiket)
+  const { detailHotel } = useSelector((state) => state.tiket)
+
+  // console.log(pesawat)
+
+  useEffect(() => {
+    dispatch(getTiket());
+  }, [dispatch])
+
   //Carousel by react-slick
   const settings = {
     dots: true,
@@ -39,12 +55,13 @@ const HomePage = () => {
   // Function to handle sidebar menu click
   const handleMenuClick = (stepNumber) => {
     setStep(stepNumber);
-  };
+  }
 
   return (
     <>
       <Navbar />
       <div className="container mx-auto">
+
         {/* main saction */}
         <div className="relative">
           {/* mainsaction */}
@@ -63,39 +80,41 @@ const HomePage = () => {
             <div className="flex flex-row gap-4">
               <button
                 onClick={() => handleMenuClick(1)}
-                className="shadow-md border-2 py-2 px-3 flex gap-2 rounded-xl hover:text-white hover:bg-blue-600 duration-300"
-              >
+                className="shadow-md border-2 py-2 px-3 flex gap-2 rounded-xl hover:text-white hover:bg-blue-600 duration-300">
                 <p>Hotel</p>
-
                 <img src={IconHotel} alt="IconHotel" />
               </button>
               <button
                 onClick={() => handleMenuClick(2)}
-                className="shadow-md border-2 py-2 px-3 flex gap-2 rounded-xl hover:text-white hover:bg-blue-600 duration-300"
-              >
+                className="shadow-md border-2 py-2 px-3 flex gap-2 rounded-xl hover:text-white hover:bg-blue-600 duration-300">
                 <p>Pesawat</p>
                 <img src={IconPesawat} alt="IconPesawat" />
               </button>
             </div>
 
             {/* detailing hotel*/}
-            {step === 1 && <DetailMenuHotelComponent />}
+            {step === 1 && (
+              <DetailMenuHotelComponent />
+            )}
 
             {/* detailing pesawat */}
-            {step === 2 && <DetailMemuPesawatComponent />}
+            {step === 2 && (
+              <DetailMemuPesawatComponent />
+            )}
+
           </div>
         </div>
 
         {/* gambar bergerak */}
-        <Slider {...settings} className="mt-20 pt-6 flex justify-center items-center mx-40 ">
-          <img src={Logo} alt="Logo" className="w-48 h-14 px-8" />
-          <img src={traveloka} alt="Logo" className="h-14 px-8" />
-          <img src={booking} alt="Logo" className="h-14 px-8" />
-          <img src={docker} alt="Logo" className="h-14 px-8" />
+        <Slider {...settings} className="mt-14 flex justify-center items-center  overflow-clip">
+          <img src={Logo} alt="Logo" className="h-20 object-contain" />
+          <img src={traveloka} alt="Logo" className="h-20 object-contain"  />
+          <img src={booking} alt="Logo" className="h-20 object-contain" />
+          <img src={docker} alt="Logo" className="h-20 object-contain" />
         </Slider>
 
         {/* Rekomendasi Destinasi dan hotel */}
-        <RekomendasiComponent />
+        <RekomendasiComponent pesawat={pesawat} hotel={hotel} detailHotel={detailHotel} />
 
         {/* about, vision, mision */}
         <AboutEtcComponent />
