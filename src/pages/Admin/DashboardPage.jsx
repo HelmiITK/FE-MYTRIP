@@ -10,7 +10,7 @@ const DashboardPage = () => {
         <TransactionStats />
       </div>
       <div className="flex flex-row gap-4 w-full">
-        <RecentHP/>
+        <RecentHP />
       </div>
     </div>
   );

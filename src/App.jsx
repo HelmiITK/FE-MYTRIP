@@ -15,6 +15,7 @@ import KelolaPesawat from "./pages/Admin/KelolaPesawat";
 import AddHotel from "./components/Modal/AddHotel";
 import AddPesawat from "./components/Modal/AddPesawat";
 import PesawatPage from "./pages/HomePage/PesawatPage";
+// import LoginAdmit from "./pages/Admin/LoginAdmit";
 
 function App() {
   return (
@@ -33,12 +34,14 @@ function App() {
           <Route path="/modal-pesawat" element={<AddPesawat />} />
 
           {/* Admin */}
+          {/* <Route path="/login-admit" element={<login />} /> */}
+          {/* <Route path="/admit" element={<LoginAdmit/>} /> */}
           <Route path="/admin" element={<Layout />}>
             <Route path="dashboard" element={<DashboardPage />} />
             <Route path="kelola-hotel" element={<KelolaHotel />} />
             <Route path="kelola-pesawat" element={<KelolaPesawat />} />
-            {/* <Route path="pesawat" element={<KelolaHotel />} /> */}
           </Route>
+          
           {/* <Route path="/admin" element={<Layout />} /> */}
           <Route path="/payment-hotel/:hotelId" element={<PaymetHotel />} />
           <Route path="/" element={<HomePage />} />

@@ -3,7 +3,7 @@ import { FaHotel, FaPlane } from "react-icons/fa";
 const DahboardStats = () => {
   return (
     <div className="flex gap-4 w-full">
-      <BoxWrapper>
+      <div className="bg-white rounded-sm p-4 flex-1 border border-gray-200 flex items-cente">
         <div className="rounded-full h-12 w-12 flex items-center justify-center bg-blue-700">
           <FaHotel className="text-2xl text-white" />
         </div>
@@ -14,8 +14,9 @@ const DahboardStats = () => {
             <span className="text-sm text-green-500 pl-2">+999</span>
           </div>
         </div>
-      </BoxWrapper>
-      <BoxWrapper>
+      </div>
+
+      <div className="bg-white rounded-sm p-4 flex-1 border border-gray-200 flex items-cente">
         <div className="rounded-full h-12 w-12 flex items-center justify-center bg-red-700">
           <FaPlane className="text-2xl text-white" />
         </div>
@@ -26,8 +27,9 @@ const DahboardStats = () => {
             <span className="text-sm text-green-500 pl-2">+999</span>
           </div>
         </div>
-      </BoxWrapper>
-      <BoxWrapper>
+      </div>
+
+      <div className="bg-white rounded-sm p-4 flex-1 border border-gray-200 flex items-cente">
         <div className="rounded-full h-12 w-12 flex items-center justify-center bg-green-700">
           <FaHotel className="text-2xl text-white" />
         </div>
@@ -38,8 +40,9 @@ const DahboardStats = () => {
             <span className="text-sm text-green-500 pl-2">+999</span>
           </div>
         </div>
-      </BoxWrapper>
-      <BoxWrapper>
+      </div>
+
+      <div className="bg-white rounded-sm p-4 flex-1 border border-gray-200 flex items-cente">
         <div className="rounded-full h-12 w-12 flex items-center justify-center bg-yellow-500">
           <FaPlane className="text-2xl text-white" />
         </div>
@@ -50,17 +53,9 @@ const DahboardStats = () => {
             <span className="text-sm text-green-500 pl-2">+999</span>
           </div>
         </div>
-      </BoxWrapper>
+      </div>
     </div>
   );
 };
 
 export default DahboardStats;
-
-function BoxWrapper({ children }) {
-  return (
-    <div className="bg-white rounded-sm p-4 flex-1 border border-gray-200 flex items-cente">
-      {children}
-    </div>
-  );
-}

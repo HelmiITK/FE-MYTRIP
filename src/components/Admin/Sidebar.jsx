@@ -1,5 +1,4 @@
 import { Typography, List, ListItem, ListItemPrefix } from "@material-tailwind/react";
-
 import { PresentationChartBarIcon, UserCircleIcon, PowerIcon } from "@heroicons/react/24/solid";
 import { IoAirplane } from "react-icons/io5";
 import { FaHotel } from "react-icons/fa6";
@@ -7,55 +6,55 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className="bg-neutral-900 w-60 p-3 flex flex-col text-white">
-      <div className="mb-2 p-5">
+    <div className="bg-neutral-900 w-64 p-3 flex flex-col text-white">
+      <div className="mb-4 p-5">
         <Typography variant="h5" color="blue-gray">
           <Link to="dashboard">My-Trip</Link>
         </Typography>
       </div>
       <List>
         <Link to="dashboard">
-          <ListItem>
+          <ListItem className="mb-2">
             <ListItemPrefix>
-              <PresentationChartBarIcon className="h-5 w-5" />
+              <PresentationChartBarIcon className="h-6 w-6 mr-2" />
             </ListItemPrefix>
-            Dashboard
+            <span className="text-sm">Dashboard</span>
           </ListItem>
         </Link>
 
         <Link to="kelola-hotel">
-          <ListItem>
+          <ListItem className="mb-2">
             <ListItemPrefix>
-              <FaHotel className="h-5 w-5" />
+              <FaHotel className="h-6 w-6 mr-2" />
             </ListItemPrefix>
-            Kelola Hotel
+            <span className="text-sm">Kelola Hotel</span>
           </ListItem>
         </Link>
 
         <Link to="kelola-pesawat">
-          <ListItem>
+          <ListItem className="mb-2">
             <ListItemPrefix>
-              <IoAirplane className="h-5 w-5" />
+              <IoAirplane className="h-6 w-6 mr-2" />
             </ListItemPrefix>
-            Kelola Pesawat
+            <span className="text-sm">Kelola Pesawat</span>
           </ListItem>
         </Link>
 
-        <Link>
+        <Link className="mb-2">
           <ListItem>
             <ListItemPrefix>
-              <UserCircleIcon className="h-5 w-5" />
+              <UserCircleIcon className="h-6 w-6 mr-2" />
             </ListItemPrefix>
-            Profile
+            <span className="text-sm">Create Status</span>
           </ListItem>
         </Link>
 
-        <Link>
+        <Link className="mb-2">
           <ListItem>
             <ListItemPrefix>
-              <PowerIcon className="h-5 w-5" />
+              <PowerIcon className="h-6 w-6 mr-2" />
             </ListItemPrefix>
-            Log Out
+            <span className="text-sm">Log Out</span>
           </ListItem>
         </Link>
       </List>
