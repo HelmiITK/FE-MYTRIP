@@ -45,18 +45,18 @@ const RekomendasiComponent = ({ pesawat, hotel }) => {
             <div className="grid grid-cols-3 gap-5">
                {hotel.map((item, i) => (
                   <>
-                     <Link as={Link} to={`/hotel/${item.id}`} className="border-2 rounded-3xl shadow-lg p-4 hover:scale-105 duration-300 cursor-pointer hover:bg-blue-500 group ">
+                     <Link as={Link} to={`/hotel/${item?.hotel?.id}`} className="border-2 rounded-3xl shadow-lg p-4 hover:scale-105 duration-300 cursor-pointer hover:bg-blue-500 group ">
                         <img
                            key={i}
-                           src={item.hotel_foto}
-                           alt={item.hotel_name}
+                           src={item?.hotel?.hotel_foto}
+                           alt={item?.hotel?.hotel_name}
                            className="rounded-3xl h-56 mb-4 object-cover w-full group-hover:drop-shadow-xl"
                         />
-                        <h2 className="text-2xl font-semibold group-hover:text-white duration-300 group-hover:text-bold">{item.hotel_name}</h2>
+                        <h2 className="text-2xl font-semibold group-hover:text-white duration-300 group-hover:text-bold">{item?.hotel?.hotel_name}</h2>
                         <div className="flex justify-between text-sm font-semibold">
                            <div className="flex items-center gap-1">
                               <FaLocationDot className="group-hover:text-white duration-300 group-hover:text-bold" />
-                              <h3 className="group-hover:text-white duration-300 group-hover:text-bold">{item.hotel_city}</h3>
+                              <h3 className="group-hover:text-white duration-300 group-hover:text-bold">{item?.hotel?.hotel_city}</h3>
                            </div>
                         </div>
                      </Link>

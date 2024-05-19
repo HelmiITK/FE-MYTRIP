@@ -12,7 +12,7 @@ import { FaPlaneUp } from "react-icons/fa6";
 import { GiAirplaneDeparture } from "react-icons/gi";
 import { GiAirplaneArrival } from "react-icons/gi";
 import Swal from 'sweetalert2';
-
+import { createReservasiPesawat } from "../redux/Actions/TiketActions";
 const PesawatPage = () => {
    const { pesawatId } = useParams();
    const dispatch = useDispatch();
@@ -28,7 +28,8 @@ const PesawatPage = () => {
       namaBelakang: '',
       bulanLahir: '',
       hariLahir: '',
-      tahunLahir: ''
+      tahunLahir: '',
+      seat: ''
    });
 
    const handleInputChange = (e) => {
@@ -37,26 +38,37 @@ const PesawatPage = () => {
    };
 
    const handleSubmit = () => {
-      const { namaDepan, namaBelakang, bulanLahir, hariLahir, tahunLahir } = form;
+      const { namaDepan, namaBelakang, bulanLahir, hariLahir, tahunLahir, seat } = form;
 
-      if (namaDepan && namaBelakang && bulanLahir && hariLahir && tahunLahir) {
-         Swal.fire({
-            title: 'Berhasil!',
-            text: 'Tiket berhasil dipesan.',
-            icon: 'success',
-            confirmButtonText: 'OK'
-         }).then(() => {
-            // Reset form fields
-            setForm({
-               namaDepan: '',
-               namaBelakang: '',
-               bulanLahir: '',
-               hariLahir: '',
-               tahunLahir: ''
+      if (namaDepan && namaBelakang && bulanLahir && hariLahir && tahunLahir && seat) {
+         dispatch(createReservasiPesawat(pesawatId))
+            .then(() => {
+               Swal.fire({
+                  title: 'Berhasil!',
+                  text: 'Tiket berhasil dipesan.',
+                  icon: 'success',
+                  confirmButtonText: 'OK'
+               }).then(() => {
+                  // Reset form fields
+                  setForm({
+                     namaDepan: '',
+                     namaBelakang: '',
+                     bulanLahir: '',
+                     hariLahir: '',
+                     tahunLahir: '',
+                  });
+                  // Close modal
+                  modalRef.current.close();
+               });
+            })
+            .catch((error) => {
+               Swal.fire({
+                  title: 'Gagal!',
+                  text: error.message,
+                  icon: 'error',
+                  confirmButtonText: 'OK'
+               });
             });
-            // Close modal
-            modalRef.current.close();
-         });
       } else {
          Swal.fire({
             title: 'Gagal!',
@@ -145,7 +157,6 @@ const PesawatPage = () => {
                               <h3 className="text-lg">{splitDes}</h3>
                            </div>
                         </div>
-
                         <button
                            className="border-2 border-green-500 rounded-xl py-2 px-4 w-64 text-center font-medium bg-white  hover:bg-green-500 duration-300 hover:text-white hover:scale-105 hover:drop-shadow-md"
                            onClick={() => modalRef.current.showModal()}
@@ -186,12 +197,12 @@ const PesawatPage = () => {
                                           </div>
                                        </div>
                                        <div>
-                                          <h1 className="">Harga tike</h1>
+                                          <h1 className="">Harga tiket</h1>
                                           <h2 className="font-medium text-lg">Rp.{detailPesawat?.pesawat_harga}</h2>
                                        </div>
                                     </div>
                                  </div>
-                                 <form className="flex flex-col gap-6">
+                                 <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                                     <div className="flex flex-col gap-4">
                                        <h1 className="font-medium text-lg">Nama Penumpang</h1>
                                        <div className="flex flex-col gap-2">
@@ -227,7 +238,7 @@ const PesawatPage = () => {
                                           <label htmlFor="bulanLahir" className="flex flex-col gap-2">
                                              <h2 className="font-medium">Bulan</h2>
                                              <input
-                                                type="text"
+                                                type="date"
                                                 name="bulanLahir"
                                                 id="bulanLahir"
                                                 className="border border-black rounded-lg py-2 px-4"
@@ -239,7 +250,7 @@ const PesawatPage = () => {
                                           <label htmlFor="hariLahir" className="flex flex-col gap-2">
                                              <h2 className="font-medium">Hari</h2>
                                              <input
-                                                type="text"
+                                                type="date"
                                                 name="hariLahir"
                                                 id="hariLahir"
                                                 className="border border-black rounded-lg py-2 px-4"
@@ -251,12 +262,29 @@ const PesawatPage = () => {
                                           <label htmlFor="tahunLahir" className="flex flex-col gap-2">
                                              <h2 className="font-medium">Tahun</h2>
                                              <input
-                                                type="text"
+                                                type="date"
                                                 name="tahunLahir"
                                                 id="tahunLahir"
                                                 className="border border-black rounded-lg py-2 px-4"
                                                 placeholder="Tahun lahir anda"
                                                 value={form.tahunLahir}
+                                                onChange={handleInputChange}
+                                             />
+                                          </label>
+                                       </div>
+                                    </div>
+                                    <div className="flex flex-col gap-4">
+                                       <h1 className="font-medium text-lg">Seat</h1>
+                                       <div className="flex flex-col gap-2">
+                                          <label htmlFor="seat" className="flex flex-col gap-2">
+                                             <h2 className="font-medium">Seat</h2>
+                                             <input
+                                                type="text"
+                                                name="seat"
+                                                id="seat"
+                                                className="border border-black rounded-lg py-2 px-4"
+                                                placeholder="Pilih seat anda"
+                                                value={form.seat}
                                                 onChange={handleInputChange}
                                              />
                                           </label>

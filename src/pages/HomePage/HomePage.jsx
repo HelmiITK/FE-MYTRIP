@@ -33,6 +33,7 @@ const HomePage = () => {
   const { detailHotel } = useSelector((state) => state.tiket)
 
   // console.log(pesawat)
+  console.log(hotel)
 
   useEffect(() => {
     dispatch(getTiket());

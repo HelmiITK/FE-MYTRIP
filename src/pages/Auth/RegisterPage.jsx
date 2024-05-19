@@ -113,7 +113,7 @@ const RegisterPage = () => {
                 </div>
               </div>
             </div>
-            <button className="btn btn-primary w-full text-[14px] font-medium bg-black text-white py-[10px] rounded-2xl mt-5">
+            <button type="submit" className="btn btn-primary w-full text-[14px] font-medium bg-black text-white py-[10px] rounded-2xl mt-5">
               Daftar
             </button>
             <div className="flex justify-center items-center gap-2 mt-6">
