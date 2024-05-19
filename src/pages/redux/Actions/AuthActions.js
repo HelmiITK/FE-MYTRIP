@@ -4,6 +4,38 @@ import { toast } from "react-toastify";
 
 const api_url = import.meta.env.VITE_REACT_API_ADDRESS;
 
+// export const loginAdmit = (email, password, navigate) => async (dispatch) => {
+//   try {
+//     const response = await axios.post(`${api_url}/auth/admit/login`, {
+//       email: email,
+//       password: password,
+//     });
+
+//     const { data } = response.data;
+//     const { token } = data;
+
+//     dispatch(setToken(token));
+//     navigate("/admin/dashboard");
+//   } catch (error) {
+//     if (error.response) {
+//       if (error.response.status === 403) {
+//         toast.error("Email atau Password Anda salah. Silahkan coba lagi.");
+//       } else if (error.response.status === 404) {
+//         toast.error("Email tidak terdaftar. Silakan cek kembali email Anda.");
+//       } else {
+//         toast.error("Login gagal. Silakan coba lagi nanti.");
+//       }
+//     } else {
+//       toast.error("Terjadi kesalahan pada server. Silakan coba lagi nanti.");
+//     }
+//   }
+// };
+// export const loginAdmit = (email, password, navigate) => asnyc (dispatch) => {
+//    try {
+
+//    }
+// }
+
 export const login = (email, password, navigate) => async (dispatch) => {
    try {
       const response = await axios.post(`${api_url}/auth/member/login`, {

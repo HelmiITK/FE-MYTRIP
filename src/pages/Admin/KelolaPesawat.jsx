@@ -3,6 +3,8 @@ import AddPesawat from "../../components/Modal/AddPesawat";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPesawat } from "../redux/Actions/AddActions";
+import TablePesawatComponent from "../../components/Dashboard/TablePesawatComponent";
+import { deletePesawat } from "../redux/Actions/DelActions";
 
 const KelolaPesawat = () => {
   // const pesawat = [
@@ -53,8 +55,12 @@ const KelolaPesawat = () => {
     setPesawatId(null);
   };
 
+  const handleDeletePesawat = (pesawatId) => {
+    dispatch(deletePesawat(pesawatId));
+  };
+
   return (
-    <div className="flex flex-col justify-center container mt-10 mx-auto">
+    <div className="flex flex-col justify-center container mt-10 mx-auto overflow-auto max-h-screen">
       <div className="flex flex-row justify-between w-full mb-4 items-center">
         <div className="font-bold text-xl">Data Kelola Hotel</div>
         <div className="flex flex-row gap-3">
@@ -76,19 +82,9 @@ const KelolaPesawat = () => {
       {/* Tabel data hotel */}
       <div className="overflow-x-auto w-full">
         <table className="min-w-full bg-white border rounded-lg">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="px-4 py-3 text-left">ID</th>
-              <th className="px-4 py-3 text-left">Nama Pesawat</th>
-              <th className="px-4 py-3 text-left">Photo</th>
-              <th className="px-4 py-3 text-left">Keberangkaran</th>
-              <th className="px-4 py-3 text-left">Tujuan</th>
-              <th className="px-4 py-3 text-left">Tanggal Keberangkatan</th>
-              <th className="px-4 py-3 text-left">Tanggal Tujuan</th>
-              <th className="px-4 py-3 text-left">Harga</th>
-              <th className="px-4 py-3 text-left">Actions</th>
-            </tr>
-          </thead>
+          {/* Table Pesawat */}
+          <TablePesawatComponent />
+
           <tbody className="divide-y divide-gray-200">
             {pesawat ? (
               pesawat.map((pesawat) => (
@@ -96,7 +92,11 @@ const KelolaPesawat = () => {
                   <td className="px-4 py-3">{pesawat.id}</td>
                   <td className="px-4 py-3">{pesawat.pesawat_name}</td>
                   <td className="px-4 py-3">
-                    <img className="h-12 w-12 rounded-lg" src={pesawat.pesawat_foto} alt={pesawat.pesawat_name} />
+                    <img
+                      className="h-12 w-12 rounded-lg"
+                      src={pesawat.pesawat_foto}
+                      alt={pesawat.pesawat_name}
+                    />
                   </td>
                   <td className="px-4 py-3">{pesawat.pesawat_depature_kota}</td>
                   <td className="px-4 py-3">{pesawat.pesawat_destination_kota}</td>
@@ -110,7 +110,12 @@ const KelolaPesawat = () => {
                       <button className="px-3 py-1 bg-blue-600 text-white rounded-md mr-2">
                         Edit
                       </button>
-                      <button className="px-3 py-1 bg-red-600 text-white rounded-md">Delete</button>
+                      <button
+                        className="px-3 py-1 bg-red-600 text-white rounded-md"
+                        onClick={() => handleDeletePesawat(pesawat.id)}
+                      >
+                        Delete
+                      </button>
                     </div>
                   </td>
                 </tr>
